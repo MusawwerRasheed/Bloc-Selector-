@@ -1,8 +1,7 @@
 
 
 import 'dart:convert';
-import 'dart:developer';
-import 'dart:ffi';
+import 'dart:developer'; 
 import 'dart:io'; 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -43,10 +42,8 @@ final firebase_Messaging  = FirebaseMessaging.instance;
 
  final _androidChannel = const AndroidNotificationChannel('high_importance_channel', 'High importance notification',
  description: 'foreground notificaion description', importance: Importance.defaultImportance);
-
-
  
-
+ 
 Future initPushNotifications ()async{
    await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
     alert: true,
