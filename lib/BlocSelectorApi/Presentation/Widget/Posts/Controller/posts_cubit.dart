@@ -1,3 +1,6 @@
+ 
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notifications/BlocSelectorApi/Data/Repository/posts_repository.dart';
@@ -10,10 +13,10 @@ class PostsCubit extends Cubit<PostsStates> {
   List<Posts> posts = [];
 
   Future<void> getPosts() async {
+    log('inside  the  ');
     emit(PostsLoadingState());
-
-    try {
-      List response = await postsRepository.getPosts();
+    try { 
+      List response = await PostsRepository.getPosts();
       print('response inside of cubit $response');
 
       if (response != null) {

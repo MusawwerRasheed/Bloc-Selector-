@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notifications/BlocSelectorApi/Data/AppData/Providers/providers.dart';
 import 'package:notifications/BlocSelectorApi/Presentation/Widget/Posts/posts_screen.dart';
 import 'package:notifications/Notification/Pages/home.dart';
 import 'Notification/Api/firebase_api.dart';
@@ -16,7 +18,8 @@ Future<void> main() async {
  options: DefaultFirebaseOptions.currentPlatform);
 
 await FirebaseApi().initNotification(); 
-  runApp(  MyApp());
+  
+  runApp(MultiBlocProvider(providers: appProviders, child: MyApp()));
 
 }
 
