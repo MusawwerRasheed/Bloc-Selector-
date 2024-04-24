@@ -2,12 +2,12 @@ import 'dart:async';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:notifications/BlocSelectorApi/Data/AppData/Providers/providers.dart';
 import 'package:notifications/BlocSelectorApi/Presentation/Widget/Posts/posts_screen.dart';
-import 'package:notifications/WEbUI/presentation/web_ui.dart';
-import 'Notification/Api/firebase_api.dart';
-import 'Notification/Pages/notification.dart';
+import 'package:notifications/WEbUI/presentation/WEBUI/web_ui.dart';
 import 'Notification/firebase_options.dart';
+
 
 final navigatorKey = GlobalKey<NavigatorState>();
 
@@ -25,16 +25,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      navigatorKey: navigatorKey,
-      routes: {Notifications.route: (context) => Notifications()},
-      home: WebUI(),
+    return ScreenUtilInit(
+      minTextAdapt: true,
+      splitScreenMode: true,
+      useInheritedMediaQuery: true,
+      builder: (context, build) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Chat Now',
+          home: PostsScreen(), 
+        );
+      },
     );
   }
 }
