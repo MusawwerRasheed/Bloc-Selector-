@@ -1,5 +1,6 @@
  import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:notifications/BlocSelectorApi/Data/DataResource/Resources/assets.dart';
 
 class CustomImage extends StatelessWidget {
@@ -27,16 +28,14 @@ class CustomImage extends StatelessWidget {
     return isAssetImage
         ? Image.asset(
             imageUrl ?? Assets.logo!,
-            height: height ?? 100.h,
+            height: height,  
             fit: fit ?? BoxFit.fill,
             width: width,
           )
         :
-         Image.network(
-            imageUrl ?? '',
-            height: height ?? 100.h,
+         SvgPicture.asset(imageUrl ?? '', 
+            height: height , 
             fit: fit ?? BoxFit.fill,
-            width: width,
-          );
+            width: width,);
   }
 }
